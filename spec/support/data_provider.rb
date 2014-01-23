@@ -42,5 +42,6 @@ shared_examples "a data provider" do
   it_can_store_values_kind_of 2.4
   it_can_store_values_kind_of true  
   it_can_store_values_kind_of false
-  it_can_store_values_kind_of ("Hello, Matz!" * 3000), "Long string" 
+  it_can_store_values_kind_of ("Hello, Matz!" * 3000), "Long string"
+  it_can_store_values_kind_of UberSettings::CustomizableFile.new("some_filename.rb", "puts 'hello, Matz!'")
 end
