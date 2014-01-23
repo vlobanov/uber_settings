@@ -1,5 +1,2 @@
-class ArSettings
-  def hello
-    11
-  end
+class ArSettings < ActiveRecord::Base
 end
