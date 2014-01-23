@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe UberSettings::DataProvider do
+shared_examples "a data provider" do
   before(:each) do
-    @provider = UberSettings::DataProvider.new
+    @provider = described_class.new
   end
 
   specify { @provider.should respond_to(:set_value) }
@@ -25,8 +25,8 @@ describe UberSettings::DataProvider do
   end
 
   it "shares values between class instances" do
-    inst_1 = UberSettings::DataProvider.new
-    inst_2 = UberSettings::DataProvider.new
+    inst_1 = described_class.new
+    inst_2 = described_class.new
     inst_1.set_value("hey", 123)
     inst_2.get_value("hey").should == 123
   end
