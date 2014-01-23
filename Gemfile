@@ -13,3 +13,7 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem "sqlite3"
+
+group :mongoid do
+  gem "mongoid", github: "mongoid/mongoid", branch: "master"
+end
