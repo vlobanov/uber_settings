@@ -2,7 +2,7 @@ require 'spec_helper'
 
 shared_examples "a data provider" do
   before(:each) do
-    @provider = described_class.new
+    @provider = described_class
   end
 
   specify { @provider.should respond_to(:set_value) }
@@ -25,8 +25,8 @@ shared_examples "a data provider" do
   end
 
   it "shares values between class instances" do
-    inst_1 = described_class.new
-    inst_2 = described_class.new
+    inst_1 = described_class
+    inst_2 = described_class
     inst_1.set_value("hey", 123)
     inst_2.get_value("hey").should == 123
   end
