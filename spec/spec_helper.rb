@@ -9,6 +9,8 @@ require File.expand_path("../dummy/config/environment", __FILE__)
 Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
 
 RSpec.configure do |config|
+  config.mock_with :mocha
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)
