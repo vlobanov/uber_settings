@@ -12,8 +12,11 @@ RSpec.configure do |config|
   config.mock_with :mocha
 
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.clean_with(:truncation)
+    #just in case
+    DatabaseCleaner[:active_record].strategy = :truncation
+    DatabaseCleaner[:active_record].clean_with(:truncation)
+    DatabaseCleaner[:mongoid].strategy = :truncation
+    DatabaseCleaner[:mongoid].clean_with(:truncation)
   end
 
   config.before(:each) do
