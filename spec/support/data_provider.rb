@@ -10,6 +10,13 @@ shared_examples "a data provider" do
     it "creates setting with default value if not found" do
       @provider.create_setting_with_default(:some_name, "a value")
     end
+
+    it "doesn't change value if setting existed" do
+      @provider.create_setting_with_default(:some_name, "a value")
+      @provider.set_value(:some_name, "no way")
+      @provider.create_setting_with_default(:some_name, "a new value")
+      @provider.get_value(:some_name).should == "no way"
+    end
   end
 
   describe "::set_value and ::get_value" do
