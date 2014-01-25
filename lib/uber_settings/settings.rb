@@ -1,5 +1,7 @@
 module UberSettings
   module Settings
+    DATA_TYPES = [:string, :text, :integer, :float, :boolean, :file]
+
     def self.included(klass)
       klass.instance_eval do
         extend(ClassMethods)

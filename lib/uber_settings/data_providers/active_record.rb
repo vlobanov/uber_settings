@@ -1,3 +1,5 @@
+require 'uber_settings/data_providers/provider_behavior'
+
 module UberSettings
   module ActiveRecord
     def ActiveRecord.included(klass)
@@ -5,18 +7,17 @@ module UberSettings
         extend(ClassMethods)
       end
     end
+
+    def restore_value_after_serialization
+      Marshal::load(value)
+    end
+
+    def set_value_with_serialization(new_value)
+      self.value = Marshal.dump(new_value)
+    end
     
     module ClassMethods
-      def set_value(name, value)
-        setting = find_or_initialize_by(name: name.to_s)
-        setting.value = Marshal.dump(value)
-        setting.save!
-      end
-
-      def get_value(name)
-        value = find_by(name: name.to_s).value
-        Marshal.load(value)
-      end
+      include ProviderBehavior::ClassMethods
     end
   end
 end

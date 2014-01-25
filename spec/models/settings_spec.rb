@@ -5,7 +5,7 @@ describe "Any class with UberSettings::Settings included" do
     @settings_class = settings_class_for_testing
   end
 
-  specify { @settings_class.should respond_to :[] }
+  specify { @settings_class.should respond_to :[]  }
   specify { @settings_class.should respond_to :[]= }
 
   it "delegates [] to data_provider's get_value" do

@@ -1,4 +1,5 @@
 module UberSettings
-  class SettingNotFound < Exception
+  class SettingNotFound < StandardError
+
   end
 end
