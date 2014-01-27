@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe "Any class with UberSettings::Settings included" do
+  include ModuleTestingHelper
+
   before(:each) do
-    @settings_class = settings_class_for_testing
+    @settings_class = settings_class_for_testing(UberSettings::Settings)
   end
 
   specify { @settings_class.should respond_to :[]  }
@@ -17,23 +19,4 @@ describe "Any class with UberSettings::Settings included" do
     @settings_class.data_provider.expects(:set_value).with(:some_key, "new value")
     @settings_class[:some_key] = "new value"
   end
-
-  def settings_class_for_testing
-    settings_class = Class.new
-    settings_class.instance_eval do
-      include(UberSettings::Settings)
-      def data_provider
-        @data_provider
-      end
-
-      def data_provider= dp
-        @data_provider = dp
-      end
-    end
-
-    settings_class.data_provider = mock()
-
-    settings_class
-  end
-
 end
