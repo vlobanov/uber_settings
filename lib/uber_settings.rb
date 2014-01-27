@@ -5,4 +5,6 @@ module UberSettings
   require 'uber_settings/settings'
   require 'uber_settings/defaults_dsl'
   require 'uber_settings/exceptions'
+
+  DATA_TYPES = [:string, :text, :integer, :float, :boolean, :file]
 end
