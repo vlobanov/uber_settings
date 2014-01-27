@@ -18,6 +18,40 @@ module UberSettings
       def defaults(&block)
         DefaultsDSL.new(data_provider, &block)
       end
+
+      private
+        def init_ar_data_provider
+          @data_provider = Class.new(::ActiveRecord::Base) do
+            self.table_name= "ar_settings"
+            include UberSettings::ActiveRecord
+          end
+        end
+
+        def init_mongoid_data_provider
+          data_provider_class_name = self.name + "DataProvider"
+          @data_provider = Class.new do
+            @class_name_for_mongoid_collection = data_provider_class_name
+            
+            def self.name
+              @class_name_for_mongoid_collection
+            end
+
+            include ::Mongoid::Document
+            include UberSettings::Mongoid
+          end
+        end
+
+        def init_data_provider
+          case @data_provider_type
+          when :active_record then init_ar_data_provider
+          when :mongoid then init_mongoid_data_provider
+          end
+        end
+
+        def data_provider
+          init_data_provider unless @data_provider
+          @data_provider
+        end
     end
   end
 end
