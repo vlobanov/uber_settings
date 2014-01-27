@@ -13,7 +13,7 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem "sqlite3"
-
+gem 'simplecov', require: false, group: :test
 group :mongoid do
   gem "mongoid", github: "mongoid/mongoid", branch: "master"
 end
