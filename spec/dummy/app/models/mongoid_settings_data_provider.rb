@@ -1,6 +1,6 @@
 require "mongoid"
 
-class MongoidSettings
+class MongoidSettingsDataProvider
   include Mongoid::Document
   include UberSettings::Mongoid
 end

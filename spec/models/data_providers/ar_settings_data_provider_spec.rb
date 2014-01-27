@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe ArSettings do
+describe ArSettingsDataProvider do
   it_behaves_like "a data provider"
 end
