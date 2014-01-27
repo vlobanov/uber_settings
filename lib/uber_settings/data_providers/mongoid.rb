@@ -7,6 +7,7 @@ module UberSettings
         field :_id, type: String, default: ->{ name }
         field :name, type: String
         field :value
+        field :value_type, type: String
         field :need_to_deserialize, type: Boolean
         
         extend(ClassMethods)

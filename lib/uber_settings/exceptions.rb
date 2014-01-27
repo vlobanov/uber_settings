@@ -10,4 +10,12 @@ module UberSettings
   class InvalidSettingOptions < StandardError
     
   end
+
+  class InvalidSettingValueType < StandardError
+    
+  end
+
+  class UnknownSettingValueType < StandardError
+    
+  end
 end

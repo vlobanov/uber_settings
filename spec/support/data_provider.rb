@@ -18,10 +18,25 @@ shared_examples "a data provider" do
       @provider.get_value(:some_name).should == "no way"
     end
 
+    it "can take options as third argument" do
+      @provider.create_setting_with_default(:some_name, "a value", {})
+    end
+
     describe "attributes" do
       it "creates setting with default value if not found" do
         @provider.create_setting_with_default(:some_name, "a value")
       end
+    end
+  end
+
+  context "when setting was created with :type option" do
+    it "next set_value with value of other type will raise UberSettings::InvalidSettingValueType" do
+      @provider.create_setting_with_default(:hello, "a default value", type: :string)
+      expect { @provider.set_value(:hello, Object.new) }.to raise_error(UberSettings::InvalidSettingValueType)
+    end
+
+    it "raises exception if type is unknown" do
+      expect { @provider.create_setting_with_default(:hello, "a default value", type: :bs) }.to raise_error(UberSettings::UnknownSettingValueType)
     end
   end
 

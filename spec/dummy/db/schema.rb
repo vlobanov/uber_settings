@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140123054509) do
   create_table "ar_settings", force: true do |t|
     t.string   "name"
     t.text     "value"
+    t.string   "value_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

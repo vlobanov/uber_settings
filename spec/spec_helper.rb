@@ -1,8 +1,10 @@
+#require 'simplecov'
+#SimpleCov.start
+
 require 'rubygems'
 require 'bundler/setup'
 require 'database_cleaner'
 require 'uber_settings'
-
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../dummy/config/environment", __FILE__)
 

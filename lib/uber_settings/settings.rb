@@ -16,7 +16,7 @@ module UberSettings
       end
 
       def defaults(&block)
-        self.instance_eval(block)
+        DefaultsDSL.new(data_provider, &block)
       end
     end
   end
