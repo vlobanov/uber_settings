@@ -29,7 +29,7 @@ module UberSettings
         raise InvalidSettingOptions, "Options must be a Hash" unless options.kind_of? Hash
 
         allowed_options = [:type, :description]
-        redundant_options = options.values - allowed_options
+        redundant_options = options.keys - allowed_options
         unless redundant_options.empty?
           raise InvalidSettingOptions, "Unexpected options #{redundant_options.join(", ")}"
         end
