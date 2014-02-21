@@ -22,7 +22,7 @@ module UberSettings
       private
         def init_ar_data_provider
           @data_provider = Class.new(::ActiveRecord::Base) do
-            self.table_name= "ar_settings"
+            self.table_name= "uber_settings"
             include UberSettings::ActiveRecord
           end
         end
