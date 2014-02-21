@@ -18,4 +18,8 @@ module UberSettings
   class UnknownSettingValueType < StandardError
     
   end
+
+  class UnknownDataProvider < StandardError
+    
+  end
 end
